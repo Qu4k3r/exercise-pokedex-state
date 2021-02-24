@@ -28,9 +28,9 @@ class App extends Component {
     })
   }
 
-  filterPokemons(pokemonType='default') {
+  filterPokemons(pokemonType='All') {
     this.setState(() => {
-      if(pokemonType === 'default') {
+      if(pokemonType === 'All') {
         this.myCustomArray = pokemonData;
       }
       else {
@@ -52,7 +52,7 @@ class App extends Component {
       <>
         <Header />
         <Pokemons pokemon={ this.state.currentPokemon } />
-        <Buttons nextPokemon={ () => this.nextPokemon() } filterByFire={ () => this.filterPokemons('Fire') } filterByPsychic={ () => this.filterPokemons('Psychic') } resetAll={ () => this.filterPokemons() } />
+        <Buttons nextPokemon={ this.nextPokemon } filterByType={ (event) => this.filterPokemons(event.target.innerText) } />
         <Footer />
       </>
     );
